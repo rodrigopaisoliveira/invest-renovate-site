@@ -12,17 +12,17 @@ import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "InnovateQuest — Remodelações para Particulares e Investidores" },
+      { title: "Innovate Quest — Remodelações na Grande Lisboa" },
       {
         name: "description",
         content:
-          "Remodelações chave-na-mão em Portugal. Casas, apartamentos e imóveis de investimento com rigor, prazos cumpridos e acabamentos premium. Peça o seu orçamento.",
+          "Innovate Quest Lda — remodelações de cozinhas, WCs e habitações completas na Grande Lisboa. Orçamentos em 48h, garantia e durabilidade.",
       },
-      { property: "og:title", content: "InnovateQuest — Remodelações" },
+      { property: "og:title", content: "Innovate Quest — Remodelações" },
       {
         property: "og:description",
         content:
-          "Transformamos espaços em projetos que valorizam. Particulares e investidores.",
+          "Construímos conforto. Remodelamos com inovação. 10+ anos de experiência na Grande Lisboa.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
