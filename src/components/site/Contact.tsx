@@ -61,7 +61,7 @@ export function Contact() {
 
         <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
           <MapPin className="h-4 w-4 text-primary" />
-          A trabalhar em toda a área da Grande Lisboa e Vale do Tejo
+          A trabalhar em toda a Grande Lisboa
         </div>
 
         {/* Suppress unused warning for WHATSAPP_NUMBER */}

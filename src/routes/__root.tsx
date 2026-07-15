@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "InnovateQuest — Remodelações" },
+      { title: "Innovate Quest — Remodelações na Grande Lisboa" },
       {
         name: "description",
         content:
-          "Remodelações para particulares e investidores. Rigor, prazos e acabamentos de excelência.",
+          "Innovate Quest Lda — remodelações de cozinhas, WCs e habitações na Grande Lisboa. 10+ anos de experiência, orçamentos em 48h.",
       },
     ],
     links: [
