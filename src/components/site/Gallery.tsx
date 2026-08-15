@@ -43,7 +43,7 @@ const pairs: Pair[] = [
   },
   {
     title: "Remodelação total — casa de banho social",
-    location: "Benfica",
+    location: "Amadora",
     before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação", objectPosition: "center 85%" }],
     after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
   },
