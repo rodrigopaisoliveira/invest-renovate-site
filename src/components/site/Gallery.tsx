@@ -211,12 +211,12 @@ export function Gallery() {
                       href={GALLERY_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-accent p-6 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                      className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring sm:p-10"
                     >
-                      <div className="rounded-full bg-primary p-2.5 text-primary-foreground">
-                        <ExternalLink className="h-5 w-5" />
+                      <div className="rounded-full bg-primary p-3 text-primary-foreground">
+                        <ExternalLink className="h-6 w-6" />
                       </div>
-                      <span className="font-display text-base font-semibold text-foreground">
+                      <span className="font-display text-lg font-semibold text-foreground">
                         Ver mais fotos
                       </span>
                       <span className="text-sm text-muted-foreground">Abrir galeria no Google Drive</span>
@@ -225,12 +225,12 @@ export function Gallery() {
                       href="https://www.instagram.com/innovate_quest/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-accent p-6 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                      className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring sm:p-10"
                     >
-                      <div className="rounded-full bg-primary p-2.5 text-primary-foreground">
-                        <Instagram className="h-5 w-5" />
+                      <div className="rounded-full bg-primary p-3 text-primary-foreground">
+                        <Instagram className="h-6 w-6" />
                       </div>
-                      <span className="font-display text-base font-semibold text-foreground">
+                      <span className="font-display text-lg font-semibold text-foreground">
                         Ver no Instagram
                       </span>
                       <span className="text-sm text-muted-foreground">@innovate_quest</span>
