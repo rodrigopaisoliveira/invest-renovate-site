@@ -28,9 +28,12 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#inicio" className="flex items-center gap-2 font-display text-xl font-bold text-primary-dark">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground">IQ</span>
-          <span className={scrolled ? "text-primary-dark" : "text-white"}>Innovate Quest</span>
+        <a href="#inicio" className="flex items-center">
+          <img
+            src={logoAsset.url}
+            alt="Innovate Quest Home Expert"
+            className="h-10 w-auto"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
