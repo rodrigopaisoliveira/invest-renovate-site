@@ -1,51 +1,85 @@
 import { useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import before1 from "@/assets/hero-renovation.jpg";
-import after1 from "@/assets/project-kitchen.jpg";
-import before2 from "@/assets/project-bathroom.jpg";
-import after2 from "@/assets/project-investor.jpg";
+import antes from "@/assets/ANTES.jpg.asset.json";
+import antes1 from "@/assets/ANTES1.jpg.asset.json";
+import antes2 from "@/assets/ANTES2.jpg.asset.json";
+import antess from "@/assets/ANTESS.jpg.asset.json";
+import antess1 from "@/assets/ANTESS1.jpg.asset.json";
+import depois from "@/assets/DEPOIS.webp.asset.json";
+import depois1 from "@/assets/DEPOIS1.jpg.asset.json";
+import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
+import depoiss from "@/assets/DEPOISS.jpg.asset.json";
+import depoiss1 from "@/assets/DEPOISS1.jpg.asset.json";
 
 export const ONEDRIVE_GALLERY_URL = "#"; // Substituir pelo link de partilha do OneDrive
 
-const pairs = [
+type Pair = {
+  title: string;
+  before: { src: string; alt: string }[];
+  after: { src: string; alt: string }[];
+};
+
+type Project = { name: string; pairs: Pair[] };
+
+const projects: Project[] = [
   {
-    before: before1,
-    after: after1,
-    title: "Cozinha remodelada",
-    beforeAlt: "Cozinha antes da remodelação",
-    afterAlt: "Cozinha depois da remodelação pela Innovate Quest",
+    name: "Remodelação total — apartamento",
+    pairs: [
+      {
+        title: "Sala e cozinha em open space",
+        before: [{ src: antes.url, alt: "Sala antes da remodelação, com instalação elétrica à vista" }],
+        after: [{ src: depois.url, alt: "Sala e cozinha depois da remodelação, com móvel de TV em pladur" }],
+      },
+      {
+        title: "Casa de banho social",
+        before: [{ src: antes1.url, alt: "Casa de banho antes da remodelação, com azulejo antigo" }],
+        after: [{ src: depois1.url, alt: "Casa de banho depois da remodelação, com cerâmico efeito mármore" }],
+      },
+      {
+        title: "Casa de banho suite",
+        before: [{ src: antes2.url, alt: "Casa de banho em obra, durante a colocação de cerâmico" }],
+        after: [{ src: depois2.url, alt: "Casa de banho depois da remodelação, com base de duche e sanita suspensa" }],
+      },
+    ],
   },
   {
-    before: before2,
-    after: after2,
-    title: "Casa de banho e imóvel de investimento",
-    beforeAlt: "Casa de banho antes da intervenção",
-    afterAlt: "Imóvel preparado para investimento",
+    name: "Remodelação de sala e WC",
+    pairs: [
+      {
+        title: "Móvel de TV em pladur com iluminação LED",
+        before: [{ src: antess.url, alt: "Estrutura em pladur do móvel de TV durante a obra" }],
+        after: [{ src: depoiss.url, alt: "Móvel de TV em pladur acabado, com nichos e iluminação LED" }],
+      },
+      {
+        title: "Casa de banho completa",
+        before: [{ src: antess1.url, alt: "Casa de banho antiga antes da intervenção" }],
+        after: [{ src: depoiss1.url, alt: "Casa de banho depois da remodelação, com duche e espelho retroiluminado" }],
+      },
+    ],
   },
 ];
 
-const allImages = pairs.flatMap((p) => [
-  { src: p.before, alt: p.beforeAlt, label: "Antes" },
-  { src: p.after, alt: p.afterAlt, label: "Depois" },
-]);
+const allImages = projects.flatMap((project) =>
+  project.pairs.flatMap((pair) => [
+    ...pair.before.map((img) => ({ ...img, label: "Antes" })),
+    ...pair.after.map((img) => ({ ...img, label: "Depois" })),
+  ]),
+);
+
+const indexOf = (src: string) => allImages.findIndex((img) => img.src === src);
 
 export function Gallery() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
-  const openAt = (i: number) => {
-    setIndex(i);
+  const openAt = (src: string) => {
+    setIndex(Math.max(0, indexOf(src)));
     setOpen(true);
   };
 
-  const next = useCallback(() => {
-    setIndex((i) => (i + 1) % allImages.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setIndex((i) => (i - 1 + allImages.length) % allImages.length);
-  }, []);
+  const next = useCallback(() => setIndex((i) => (i + 1) % allImages.length), []);
+  const prev = useCallback(() => setIndex((i) => (i - 1 + allImages.length) % allImages.length), []);
 
   useEffect(() => {
     if (!open) return;
@@ -58,6 +92,37 @@ export function Gallery() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, next, prev]);
 
+  const renderGroup = (
+    images: { src: string; alt: string }[],
+    label: "Antes" | "Depois",
+  ) => (
+    <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}>
+      {images.map((img) => (
+        <button
+          key={img.src}
+          onClick={() => openAt(img.src)}
+          className="group relative aspect-[4/3] overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-ring"
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <span
+            className={
+              label === "Antes"
+                ? "absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold text-white backdrop-blur"
+                : "absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground"
+            }
+          >
+            {label}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <section id="galeria" className="bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -67,50 +132,33 @@ export function Gallery() {
             Antes e depois
           </h2>
           <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-            Alguns dos projetos que realizámos. Aqui vê a diferença que faz uma remodelação
-            pensada ao pormenor.
+            Projetos reais executados pela nossa equipa. Aqui vê a diferença que faz uma
+            remodelação pensada ao pormenor.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
-          {pairs.map((pair, pairIdx) => (
-            <div
-              key={pairIdx}
-              className="overflow-hidden rounded-3xl bg-card p-4 shadow-card transition-transform hover:-translate-y-1"
-            >
-              <div className="grid gap-3 sm:grid-cols-2">
-                <button
-                  onClick={() => openAt(pairIdx * 2)}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-ring"
-                >
-                  <img
-                    src={pair.before}
-                    alt={pair.beforeAlt}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
-                    Antes
-                  </span>
-                </button>
-                <button
-                  onClick={() => openAt(pairIdx * 2 + 1)}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-ring"
-                >
-                  <img
-                    src={pair.after}
-                    alt={pair.afterAlt}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-                    Depois
-                  </span>
-                </button>
+        <div className="mt-16 space-y-16">
+          {projects.map((project) => (
+            <div key={project.name}>
+              <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
+                {project.name}
+              </h3>
+              <div className="mt-6 grid gap-8 lg:grid-cols-2">
+                {project.pairs.map((pair) => (
+                  <div
+                    key={pair.title}
+                    className="overflow-hidden rounded-3xl bg-card p-4 shadow-card transition-transform hover:-translate-y-1"
+                  >
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {renderGroup(pair.before, "Antes")}
+                      {renderGroup(pair.after, "Depois")}
+                    </div>
+                    <p className="mt-3 text-center text-sm font-medium text-muted-foreground">
+                      {pair.title}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <p className="mt-3 text-center text-sm font-medium text-muted-foreground">
-                {pair.title}
-              </p>
             </div>
           ))}
         </div>
