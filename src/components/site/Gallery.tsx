@@ -12,7 +12,8 @@ import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
 import depoiss from "@/assets/DEPOISS.jpg.asset.json";
 import depoiss1 from "@/assets/DEPOISS1.jpg.asset.json";
 
-export const ONEDRIVE_GALLERY_URL = "#"; // Substituir pelo link de partilha do OneDrive
+export const GALLERY_URL =
+  "https://drive.google.com/drive/folders/1ij9ru4r5ifwchI3IOFqhS5AvY77O36rp?usp=sharing";
 
 type Pair = {
   title: string;
@@ -24,41 +25,37 @@ type Project = { name: string; pairs: Pair[] };
 
 const projects: Project[] = [
   {
-    name: "Remodelação total — apartamento",
+    name: "Projetos recentes",
     pairs: [
       {
-        title: "Sala e cozinha em open space",
+        title: "Remodelação total — sala e cozinha em open space",
         before: [{ src: antes.url, alt: "Sala antes da remodelação, com instalação elétrica à vista" }],
         after: [{ src: depois.url, alt: "Sala e cozinha depois da remodelação, com móvel de TV em pladur" }],
       },
       {
-        title: "Casa de banho social",
+        title: "Remodelação total — casa de banho social",
         before: [{ src: antes1.url, alt: "Casa de banho antes da remodelação, com azulejo antigo" }],
         after: [{ src: depois1.url, alt: "Casa de banho depois da remodelação, com cerâmico efeito mármore" }],
       },
       {
-        title: "Casa de banho suite",
+        title: "Remodelação total — casa de banho suite",
         before: [{ src: antes2.url, alt: "Casa de banho em obra, durante a colocação de cerâmico" }],
         after: [{ src: depois2.url, alt: "Casa de banho depois da remodelação, com base de duche e sanita suspensa" }],
       },
-    ],
-  },
-  {
-    name: "Remodelação de sala e WC",
-    pairs: [
       {
-        title: "Móvel de TV em pladur com iluminação LED",
+        title: "Sala — móvel de TV em pladur com iluminação LED",
         before: [{ src: antess.url, alt: "Estrutura em pladur do móvel de TV durante a obra" }],
         after: [{ src: depoiss.url, alt: "Móvel de TV em pladur acabado, com nichos e iluminação LED" }],
       },
       {
-        title: "Casa de banho completa",
+        title: "WC — remodelação completa",
         before: [{ src: antess1.url, alt: "Casa de banho antiga antes da intervenção" }],
         after: [{ src: depoiss1.url, alt: "Casa de banho depois da remodelação, com duche e espelho retroiluminado" }],
       },
     ],
   },
 ];
+
 
 const allImages = projects.flatMap((project) =>
   project.pairs.flatMap((pair) => [
@@ -213,14 +210,14 @@ function Carousel({
               </div>
               <div>
                 <p className="font-display text-lg font-semibold text-foreground">
-                  Quer ver mais deste projeto?
+                  Quer ver mais trabalhos?
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Explore fotos e vídeos organizados na pasta do OneDrive.
+                  Explore fotos e vídeos organizados na pasta do Google Drive.
                 </p>
               </div>
               <a
-                href={ONEDRIVE_GALLERY_URL}
+                href={GALLERY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-105"
@@ -297,7 +294,7 @@ export function Gallery() {
 
         <div className="mt-12 space-y-10">
           <Carousel project={projects[0]} />
-          <Carousel project={projects[1]} compact />
+
         </div>
       </div>
     </section>
