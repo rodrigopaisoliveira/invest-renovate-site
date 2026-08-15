@@ -210,7 +210,7 @@ function Carousel({
               </div>
               <div>
                 <p className="font-display text-lg font-semibold text-foreground">
-                  Quer ver mais deste projeto?
+                  Quer ver mais trabalhos?
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Explore fotos e vídeos organizados na pasta do Google Drive.
