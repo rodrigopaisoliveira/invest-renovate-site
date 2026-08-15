@@ -2,12 +2,12 @@ import { useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Instagram } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import antes from "@/assets/ANTES.jpg.asset.json";
-import antes1 from "@/assets/ANTES1.jpg.asset.json";
+import antes2 from "@/assets/ANTES2.jpg.asset.json";
+import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
 import antes3 from "@/assets/ANTES3.jpg.asset.json";
 import depois3 from "@/assets/DEPOIS3.jpg.asset.json";
 import antess from "@/assets/ANTESS.jpg.asset.json";
 import depois from "@/assets/DEPOIS.webp.asset.json";
-import depois1 from "@/assets/DEPOIS1.jpg.asset.json";
 import depoiss from "@/assets/DEPOISS.jpg.asset.json";
 import antess1 from "@/assets/ANTESS1.jpg.asset.json";
 import depoiss1 from "@/assets/DEPOISS1.jpg.asset.json";
@@ -34,13 +34,13 @@ const pairs: Pair[] = [
   },
   {
     title: "Remodelação total — casa de banho suite",
-    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação" }],
-    after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
+    before: [{ src: antes2.url, alt: "Casa de banho em obra, durante a colocação de cerâmico" }],
+    after: [{ src: depois2.url, alt: "Casa de banho depois da remodelação, com base de duche e sanita suspensa" }],
   },
   {
     title: "Remodelação total — casa de banho social",
-    before: [{ src: antes1.url, alt: "Casa de banho antes da remodelação, com azulejo antigo" }],
-    after: [{ src: depois1.url, alt: "Casa de banho depois da remodelação, com cerâmico efeito mármore" }],
+    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação" }],
+    after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
   },
   {
     title: "WC — remodelação completa",
