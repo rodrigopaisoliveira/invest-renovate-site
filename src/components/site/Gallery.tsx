@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, Instagram } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Instagram, MapPin } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import antes from "@/assets/ANTES.jpg.asset.json";
 import antes2 from "@/assets/ANTES2.jpg.asset.json";
