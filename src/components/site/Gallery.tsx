@@ -17,6 +17,7 @@ export const GALLERY_URL =
 
 type Pair = {
   title: string;
+  location: string;
   before: { src: string; alt: string; objectPosition?: string }[];
   after: { src: string; alt: string; objectPosition?: string }[];
 };
