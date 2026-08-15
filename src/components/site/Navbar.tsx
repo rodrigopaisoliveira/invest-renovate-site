@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoAsset from "@/assets/innovate-quest-logo.png.asset.json";
 
 const links = [
   { href: "#inicio", label: "Início" },
