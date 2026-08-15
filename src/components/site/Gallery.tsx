@@ -4,6 +4,8 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import antes from "@/assets/ANTES.jpg.asset.json";
 import antes1 from "@/assets/ANTES1.jpg.asset.json";
 import antes2 from "@/assets/ANTES2.jpg.asset.json";
+import antes3 from "@/assets/ANTES3.jpg.asset.json";
+import depois3 from "@/assets/DEPOIS3.jpg.asset.json";
 import antess from "@/assets/ANTESS.jpg.asset.json";
 import depois from "@/assets/DEPOIS.webp.asset.json";
 import depois1 from "@/assets/DEPOIS1.jpg.asset.json";
