@@ -1,5 +1,5 @@
-import bathroom from "@/assets/project-bathroom.jpg";
-import kitchen from "@/assets/project-kitchen.jpg";
+import bathroom from "@/assets/sobre-wc.png.asset.json";
+import kitchen from "@/assets/sobre-sala.webp.asset.json";
 import { Award, Clock, HandHeart, Sparkles } from "lucide-react";
 
 const values = [
