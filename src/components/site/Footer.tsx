@@ -1,7 +1,7 @@
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import logoAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
-import { EMAIL, FACEBOOK, INSTAGRAM, LOCATION, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
+import { EMAIL, INSTAGRAM, LOCATION, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
 
 export function Footer() {
   return (
