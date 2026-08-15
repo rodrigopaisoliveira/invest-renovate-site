@@ -93,7 +93,7 @@ function ImageCard({
 
 export function Gallery() {
   const [slide, setSlide] = useState(0);
-  const total = pairs.length;
+  const total = pairs.length + 1;
 
   const next = useCallback(() => setSlide((s) => (s + 1) % total), [total]);
   const prev = useCallback(() => setSlide((s) => (s - 1 + total) % total), [total]);
