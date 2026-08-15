@@ -39,7 +39,7 @@ const pairs: Pair[] = [
   },
   {
     title: "Remodelação total — casa de banho social",
-    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação" }],
+    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação", objectPosition: "bottom" }],
     after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
   },
   {
