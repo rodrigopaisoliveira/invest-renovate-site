@@ -28,9 +28,9 @@ const pairs: Pair[] = [
     after: [{ src: depois.url, alt: "Sala e cozinha depois da remodelação, com móvel de TV em pladur" }],
   },
   {
-    title: "Remodelação total — casa de banho social",
-    before: [{ src: antes1.url, alt: "Casa de banho antes da remodelação, com azulejo antigo" }],
-    after: [{ src: depois1.url, alt: "Casa de banho depois da remodelação, com cerâmico efeito mármore" }],
+    title: "Sala — móvel de TV em pladur com iluminação LED",
+    before: [{ src: antess.url, alt: "Estrutura em pladur do móvel de TV durante a obra" }],
+    after: [{ src: depoiss.url, alt: "Móvel de TV em pladur acabado, com nichos e iluminação LED" }],
   },
   {
     title: "Remodelação total — casa de banho suite",
@@ -38,9 +38,9 @@ const pairs: Pair[] = [
     after: [{ src: depois2.url, alt: "Casa de banho depois da remodelação, com base de duche e sanita suspensa" }],
   },
   {
-    title: "Sala — móvel de TV em pladur com iluminação LED",
-    before: [{ src: antess.url, alt: "Estrutura em pladur do móvel de TV durante a obra" }],
-    after: [{ src: depoiss.url, alt: "Móvel de TV em pladur acabado, com nichos e iluminação LED" }],
+    title: "Remodelação total — casa de banho social",
+    before: [{ src: antes1.url, alt: "Casa de banho antes da remodelação, com azulejo antigo" }],
+    after: [{ src: depois1.url, alt: "Casa de banho depois da remodelação, com cerâmico efeito mármore" }],
   },
   {
     title: "WC — remodelação completa",
