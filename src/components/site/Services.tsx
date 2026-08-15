@@ -1,5 +1,4 @@
 import kitchen from "@/assets/project-kitchen.jpg";
-import bathroom from "@/assets/project-bathroom.jpg";
 import investor from "@/assets/project-investor.jpg";
 import servico1 from "@/assets/servico-1.jpg.asset.json";
 import servico2 from "@/assets/servico-2.jpg.asset.json";
