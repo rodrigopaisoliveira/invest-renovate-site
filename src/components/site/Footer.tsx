@@ -30,6 +30,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href="#inicio" className="hover:text-primary">Início</a></li>
               <li><a href="#servicos" className="hover:text-primary">Serviços</a></li>
+              <li><a href="#galeria" className="hover:text-primary">Galeria</a></li>
               <li><a href="#sobre" className="hover:text-primary">Sobre nós</a></li>
               <li><a href="#contacto" className="hover:text-primary">Contactos</a></li>
               <li><a href="#orcamento" className="hover:text-primary">Pedir Orçamento</a></li>
