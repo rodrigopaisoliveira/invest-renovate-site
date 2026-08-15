@@ -1,6 +1,8 @@
 import kitchen from "@/assets/project-kitchen.jpg";
-import bathroom from "@/assets/project-bathroom.jpg";
 import investor from "@/assets/project-investor.jpg";
+import servico1 from "@/assets/servico-1.jpg.asset.json";
+import servico2 from "@/assets/servico-2.jpg.asset.json";
+import servico3 from "@/assets/servico-3.jpg.asset.json";
 import { Check, Home, Building2 } from "lucide-react";
 
 const particulares = [
@@ -116,7 +118,7 @@ export function Services() {
 
         {/* mini gallery strip */}
         <div className="mt-12 grid grid-cols-3 gap-3 sm:gap-6">
-          {[kitchen, bathroom, investor].map((img, i) => (
+          {[servico1.url, servico2.url, servico3.url].map((img, i) => (
             <div key={i} className="aspect-[4/3] overflow-hidden rounded-2xl">
               <img
                 src={img}

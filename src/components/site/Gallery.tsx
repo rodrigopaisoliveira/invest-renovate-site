@@ -168,7 +168,7 @@ export function Gallery() {
 
             <div className="relative mt-4 overflow-hidden">
               <div
-                className="flex transition-transform duration-500 ease-in-out"
+                className="flex items-start transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${slide * 100}%)` }}
               >
                 {pairs.map((pair, i) => (
@@ -197,7 +197,7 @@ export function Gallery() {
                     href={GALLERY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-accent text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-accent sm:aspect-[8/3] text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
                   >
                     <div className="rounded-full bg-primary p-3 text-primary-foreground">
                       <ExternalLink className="h-6 w-6" />
