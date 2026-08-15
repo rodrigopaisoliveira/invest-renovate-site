@@ -294,7 +294,7 @@ export function Gallery() {
 
         <div className="mt-12 space-y-10">
           <Carousel project={projects[0]} />
-          <Carousel project={projects[1]} compact />
+
         </div>
       </div>
     </section>
