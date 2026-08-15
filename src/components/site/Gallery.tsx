@@ -194,9 +194,15 @@ export function Gallery() {
                         eager={i === 0}
                       />
                     </div>
-                    <p className="mt-3 text-center text-sm font-medium text-muted-foreground">
-                      {pair.title}
-                    </p>
+                    <div className="mt-3 flex flex-col items-center gap-1">
+                      <p className="text-center text-sm font-medium text-muted-foreground">
+                        {pair.title}
+                      </p>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-primary">
+                        <MapPin className="h-3 w-3" />
+                        {pair.location}
+                      </span>
+                    </div>
                   </div>
                 ))}
                 <div className="w-full shrink-0">
