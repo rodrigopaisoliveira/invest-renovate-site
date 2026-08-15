@@ -93,7 +93,7 @@ function ImageCard({
 
 export function Gallery() {
   const [slide, setSlide] = useState(0);
-  const total = pairs.length;
+  const total = pairs.length + 1;
 
   const next = useCallback(() => setSlide((s) => (s + 1) % total), [total]);
   const prev = useCallback(() => setSlide((s) => (s - 1 + total) % total), [total]);
@@ -129,7 +129,7 @@ export function Gallery() {
   const currentPair = pairs[slide];
 
   return (
-    <section id="galeria" className="bg-background py-16 sm:py-20">
+    <section id="galeria" className="bg-accent py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">Galeria</span>
@@ -143,7 +143,7 @@ export function Gallery() {
         </div>
 
         <div className="mt-8 sm:mt-10">
-          <div className="rounded-3xl bg-card p-4 shadow-card sm:p-6">
+          <div className="rounded-3xl bg-background p-4 shadow-card sm:p-6">
             <div className="flex items-center justify-between gap-4">
               <h3 className="font-display text-lg font-bold text-foreground sm:text-xl">
                 Projetos recentes
@@ -192,6 +192,24 @@ export function Gallery() {
                     </p>
                   </div>
                 ))}
+                <div className="w-full shrink-0">
+                  <a
+                    href={GALLERY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-accent text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <div className="rounded-full bg-primary p-3 text-primary-foreground">
+                      <ExternalLink className="h-6 w-6" />
+                    </div>
+                    <span className="font-display text-lg font-semibold text-foreground">
+                      Ver mais fotos
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                      Abrir galeria completa no Google Drive
+                    </span>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -216,7 +234,7 @@ export function Gallery() {
               href={GALLERY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center gap-2 rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               Ver galeria completa
               <ExternalLink className="h-4 w-4" />
