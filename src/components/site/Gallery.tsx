@@ -10,7 +10,6 @@ import depois1 from "@/assets/DEPOIS1.jpg.asset.json";
 import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
 import depoiss from "@/assets/DEPOISS.jpg.asset.json";
 import novo from "@/assets/IMG_6776_1.png.asset.json";
-import novo from "@/assets/IMG_6776_1.png.asset.json";
 
 export const GALLERY_URL =
   "https://drive.google.com/drive/folders/1ij9ru4r5ifwchI3IOFqhS5AvY77O36rp?usp=sharing";
