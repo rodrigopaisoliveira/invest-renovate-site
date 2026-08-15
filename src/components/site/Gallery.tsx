@@ -62,128 +62,189 @@ const projects: Project[] = [
 
 const allImages = projects.flatMap((project) =>
   project.pairs.flatMap((pair) => [
-    ...pair.before.map((img) => ({ ...img, label: "Antes" })),
-    ...pair.after.map((img) => ({ ...img, label: "Depois" })),
+    ...pair.before.map((img) => ({ ...img, label: "Antes", project: project.name })),
+    ...pair.after.map((img) => ({ ...img, label: "Depois", project: project.name })),
   ]),
 );
 
 const indexOf = (src: string) => allImages.findIndex((img) => img.src === src);
 
-export function Gallery() {
+function ImageCard({
+  img,
+  label,
+  onClick,
+  className,
+}: {
+  img: { src: string; alt: string };
+  label: "Antes" | "Depois";
+  onClick: () => void;
+  className?: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`group relative block overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-ring ${className ?? ""}`}
+    >
+      <img
+        src={img.src}
+        alt={img.alt}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <span
+        className={
+          label === "Antes"
+            ? "absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold text-white backdrop-blur"
+            : "absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground"
+        }
+      >
+        {label}
+      </span>
+    </button>
+  );
+}
+
+function Carousel({
+  project,
+  compact = false,
+}: {
+  project: Project;
+  compact?: boolean;
+}) {
+  const [slide, setSlide] = useState(0);
+  const total = project.pairs.length + 1; // +1 para o slide final "Ver mais"
+
+  const next = useCallback(() => setSlide((s) => (s + 1) % total), [total]);
+  const prev = useCallback(() => setSlide((s) => (s - 1 + total) % total), [total]);
+
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const openAt = (src: string) => {
-    setIndex(Math.max(0, indexOf(src)));
+    setLightboxIndex(Math.max(0, indexOf(src)));
     setOpen(true);
   };
 
-  const next = useCallback(() => setIndex((i) => (i + 1) % allImages.length), []);
-  const prev = useCallback(() => setIndex((i) => (i - 1 + allImages.length) % allImages.length), []);
+  const nextLightbox = useCallback(
+    () => setLightboxIndex((i) => (i + 1) % allImages.length),
+    [],
+  );
+  const prevLightbox = useCallback(
+    () => setLightboxIndex((i) => (i - 1 + allImages.length) % allImages.length),
+    [],
+  );
 
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") nextLightbox();
+      if (e.key === "ArrowLeft") prevLightbox();
       if (e.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open, next, prev]);
+  }, [open, nextLightbox, prevLightbox]);
 
-  const renderGroup = (
-    images: { src: string; alt: string }[],
-    label: "Antes" | "Depois",
-  ) => (
-    <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}>
-      {images.map((img) => (
-        <button
-          key={img.src}
-          onClick={() => openAt(img.src)}
-          className="group relative aspect-[4/3] overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-ring"
-        >
-          <img
-            src={img.src}
-            alt={img.alt}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <span
-            className={
-              label === "Antes"
-                ? "absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold text-white backdrop-blur"
-                : "absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground"
-            }
-          >
-            {label}
-          </span>
-        </button>
-      ))}
-    </div>
-  );
+  const isLastSlide = slide === total - 1;
+  const currentPair = project.pairs[slide];
 
   return (
-    <section id="galeria" className="bg-background py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary">Galeria</span>
-          <h2 className="mt-3 font-display text-3xl font-bold text-foreground sm:text-5xl">
-            Antes e depois
-          </h2>
-          <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-            Projetos reais executados pela nossa equipa. Aqui vê a diferença que faz uma
-            remodelação pensada ao pormenor.
-          </p>
+    <div className={compact ? "rounded-2xl bg-card p-4 shadow-card" : "rounded-3xl bg-card p-5 shadow-card sm:p-8"}>
+      <div className="flex items-center justify-between gap-4">
+        <h3
+          className={
+            compact
+              ? "font-display text-lg font-bold text-foreground"
+              : "font-display text-xl font-bold text-foreground sm:text-2xl"
+          }
+        >
+          {project.name}
+        </h3>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={prev}
+            className="rounded-full bg-secondary p-2 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            onClick={next}
+            className="rounded-full bg-secondary p-2 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            aria-label="Seguinte"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
+      </div>
 
-        <div className="mt-16 space-y-16">
-          {projects.map((project) => (
-            <div key={project.name}>
-              <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
-                {project.name}
-              </h3>
-              <div className="mt-6 grid gap-8 lg:grid-cols-2">
-                {project.pairs.map((pair) => (
-                  <div
-                    key={pair.title}
-                    className="overflow-hidden rounded-3xl bg-card p-4 shadow-card transition-transform hover:-translate-y-1"
-                  >
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {renderGroup(pair.before, "Antes")}
-                      {renderGroup(pair.after, "Depois")}
-                    </div>
-                    <p className="mt-3 text-center text-sm font-medium text-muted-foreground">
-                      {pair.title}
-                    </p>
-                  </div>
-                ))}
+      <div className="relative mt-4 overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${slide * 100}%)` }}
+        >
+          {project.pairs.map((pair) => (
+            <div key={pair.title} className="w-full shrink-0">
+              <div className="grid gap-3 sm:grid-cols-2">
+                <ImageCard
+                  img={pair.before[0]}
+                  label="Antes"
+                  onClick={() => openAt(pair.before[0].src)}
+                  className="aspect-[4/3]"
+                />
+                <ImageCard
+                  img={pair.after[0]}
+                  label="Depois"
+                  onClick={() => openAt(pair.after[0].src)}
+                  className="aspect-[4/3]"
+                />
               </div>
+              <p className="mt-3 text-center text-sm font-medium text-muted-foreground sm:text-base">
+                {pair.title}
+              </p>
             </div>
           ))}
-        </div>
 
-        <div className="mt-16 rounded-3xl bg-secondary px-6 py-10 text-center sm:px-12">
-          <h3 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
-            Quer ver mais projetos?
-          </h3>
-          <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
-            Temos fotografias e vídeos organizados por tipo de obra e cliente na nossa pasta
-            partilhada. Explore o arquivo completo.
-          </p>
-          <a
-            href={ONEDRIVE_GALLERY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-105"
-          >
-            Ver galeria completa no OneDrive
-            <ExternalLink className="h-4 w-4" />
-          </a>
-          <p className="mt-3 text-xs text-muted-foreground">
-            (link será atualizado assim que nos enviar o URL de partilha do OneDrive)
-          </p>
+          {/* Slide final: Ver mais */}
+          <div className="w-full shrink-0">
+            <div className="flex flex-col items-center justify-center gap-4 rounded-2xl bg-secondary px-6 py-10 text-center sm:py-14">
+              <div className="rounded-full bg-primary/10 p-4 text-primary">
+                <ExternalLink className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="font-display text-lg font-semibold text-foreground">
+                  Quer ver mais deste projeto?
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Explore fotos e vídeos organizados na pasta do OneDrive.
+                </p>
+              </div>
+              <a
+                href={ONEDRIVE_GALLERY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-105"
+              >
+                Ver galeria completa
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Indicadores */}
+      <div className="mt-4 flex justify-center gap-2">
+        {Array.from({ length: total }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setSlide(i)}
+            className={`h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-ring ${
+              i === slide ? "w-6 bg-primary" : "w-2 bg-primary/30 hover:bg-primary/50"
+            }`}
+            aria-label={`Ir para slide ${i + 1}`}
+          />
+        ))}
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -191,22 +252,22 @@ export function Gallery() {
           <DialogTitle className="sr-only">Visualização da galeria</DialogTitle>
           <div className="relative flex h-[80vh] items-center justify-center">
             <button
-              onClick={prev}
+              onClick={prevLightbox}
               className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-ring"
               aria-label="Imagem anterior"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
             <img
-              src={allImages[index].src}
-              alt={allImages[index].alt}
+              src={allImages[lightboxIndex].src}
+              alt={allImages[lightboxIndex].alt}
               className="max-h-full max-w-full rounded-lg object-contain"
             />
             <span className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/60 px-4 py-1 text-sm font-medium text-white backdrop-blur">
-              {allImages[index].label} — {index + 1} / {allImages.length}
+              {allImages[lightboxIndex].label} — {lightboxIndex + 1} / {allImages.length}
             </span>
             <button
-              onClick={next}
+              onClick={nextLightbox}
               className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-ring"
               aria-label="Imagem seguinte"
             >
@@ -215,6 +276,30 @@ export function Gallery() {
           </div>
         </DialogContent>
       </Dialog>
+    </div>
+  );
+}
+
+export function Gallery() {
+  return (
+    <section id="galeria" className="bg-background py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary">Galeria</span>
+          <h2 className="mt-3 font-display text-3xl font-bold text-foreground sm:text-5xl">
+            Antes e depois
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+            Projetos reais executados pela nossa equipa. Veja a diferença que faz uma remodelação
+            pensada ao pormenor.
+          </p>
+        </div>
+
+        <div className="mt-12 space-y-10">
+          <Carousel project={projects[0]} />
+          <Carousel project={projects[1]} compact />
+        </div>
+      </div>
     </section>
   );
 }
