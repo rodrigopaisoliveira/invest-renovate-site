@@ -9,7 +9,8 @@ import depois from "@/assets/DEPOIS.webp.asset.json";
 import depois1 from "@/assets/DEPOIS1.jpg.asset.json";
 import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
 import depoiss from "@/assets/DEPOISS.jpg.asset.json";
-import novo from "@/assets/IMG_6776_1.png.asset.json";
+import antess1 from "@/assets/ANTESS1.jpg.asset.json";
+import depoiss1 from "@/assets/DEPOISS1.jpg.asset.json";
 
 export const GALLERY_URL =
   "https://drive.google.com/drive/folders/1ij9ru4r5ifwchI3IOFqhS5AvY77O36rp?usp=sharing";
@@ -42,9 +43,9 @@ const pairs: Pair[] = [
     after: [{ src: depoiss.url, alt: "Móvel de TV em pladur acabado, com nichos e iluminação LED" }],
   },
   {
-    title: "Sala e cozinha — open space renovado",
-    before: [{ src: novo.url, alt: "Sala e cozinha em open space antes da remodelação" }],
-    after: [{ src: novo.url, alt: "Sala e cozinha em open space depois da remodelação, com cozinha em tons de teal" }],
+    title: "WC — remodelação completa",
+    before: [{ src: antess1.url, alt: "WC antigo antes da remodelação, com azulejo desatualizado" }],
+    after: [{ src: depoiss1.url, alt: "WC depois da remodelação, com espelho LED e móvel suspenso" }],
   },
 ];
 
