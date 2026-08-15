@@ -5,12 +5,11 @@ import antes from "@/assets/ANTES.jpg.asset.json";
 import antes1 from "@/assets/ANTES1.jpg.asset.json";
 import antes2 from "@/assets/ANTES2.jpg.asset.json";
 import antess from "@/assets/ANTESS.jpg.asset.json";
-import antess1 from "@/assets/ANTESS1.jpg.asset.json";
 import depois from "@/assets/DEPOIS.webp.asset.json";
 import depois1 from "@/assets/DEPOIS1.jpg.asset.json";
 import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
 import depoiss from "@/assets/DEPOISS.jpg.asset.json";
-import depoiss1 from "@/assets/DEPOISS1.jpg.asset.json";
+import novo from "@/assets/IMG_6776_1.png.asset.json";
 import novo from "@/assets/IMG_6776_1.png.asset.json";
 
 export const GALLERY_URL =
