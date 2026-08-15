@@ -193,22 +193,36 @@ export function Gallery() {
                   </div>
                 ))}
                 <div className="w-full shrink-0">
-                  <a
-                    href={GALLERY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-accent sm:aspect-[8/3] text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
-                  >
-                    <div className="rounded-full bg-primary p-3 text-primary-foreground">
-                      <ExternalLink className="h-6 w-6" />
-                    </div>
-                    <span className="font-display text-lg font-semibold text-foreground">
-                      Ver mais fotos
-                    </span>
-                    <span className="text-sm text-muted-foreground">
-                      Abrir galeria completa no Google Drive
-                    </span>
-                  </a>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <a
+                      href={GALLERY_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-accent p-6 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                      <div className="rounded-full bg-primary p-2.5 text-primary-foreground">
+                        <ExternalLink className="h-5 w-5" />
+                      </div>
+                      <span className="font-display text-base font-semibold text-foreground">
+                        Ver mais fotos
+                      </span>
+                      <span className="text-sm text-muted-foreground">Abrir galeria no Google Drive</span>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/innovate_quest/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-accent p-6 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                      <div className="rounded-full bg-primary p-2.5 text-primary-foreground">
+                        <Instagram className="h-5 w-5" />
+                      </div>
+                      <span className="font-display text-base font-semibold text-foreground">
+                        Ver no Instagram
+                      </span>
+                      <span className="text-sm text-muted-foreground">@innovate_quest</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
