@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/innovate-quest-logo.png.asset.json";
+import logoLightAsset from "@/assets/innovate-quest-logo.png.asset.json";
+import logoDarkAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
 
 const links = [
   { href: "#inicio", label: "Início" },
@@ -30,7 +31,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="#inicio" className="flex items-center">
           <img
-            src={logoAsset.url}
+            src={scrolled ? logoLightAsset.url : logoDarkAsset.url}
             alt="Innovate Quest Home Expert"
             className="h-10 w-auto"
           />
