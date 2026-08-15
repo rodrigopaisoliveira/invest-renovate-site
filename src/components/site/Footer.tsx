@@ -59,9 +59,9 @@ export function Footer() {
                   <Mail className="h-4 w-4" /> {EMAIL}
                 </a>
               </li>
-              <li className="flex items-center gap-4 pt-2">
-                <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary">
-                  <Instagram className="h-5 w-5" />
+              <li className="pt-2">
+                <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary">
+                  <Instagram className="h-5 w-5" /> @innovate_quest
                 </a>
               </li>
             </ul>
