@@ -1,7 +1,7 @@
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import logoAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
-import { EMAIL, FACEBOOK, INSTAGRAM, LOCATION, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
+import { EMAIL, INSTAGRAM, LOCATION, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -9,13 +9,13 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <div className="flex items-center">
+            <a href="#inicio" className="flex items-center">
               <img
                 src={logoAsset.url}
                 alt="Innovate Quest Home Expert"
                 className="h-12 w-auto"
               />
-            </div>
+            </a>
             <p className="mt-4 max-w-sm text-sm text-white/60">
               Remodelações para particulares e investidores. Rigor, prazo e um acabamento à altura
               do seu projeto.
@@ -62,9 +62,6 @@ export function Footer() {
               <li className="flex items-center gap-4 pt-2">
                 <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary">
                   <Instagram className="h-5 w-5" />
-                </a>
-                <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-primary">
-                  <Facebook className="h-5 w-5" />
                 </a>
               </li>
             </ul>

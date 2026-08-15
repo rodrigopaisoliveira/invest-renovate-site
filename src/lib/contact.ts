@@ -5,8 +5,7 @@ export const PHONE_NUMBER = {
   tel: "+351924240781",
 };
 export const EMAIL = "innovatequestlda@gmail.com";
-export const INSTAGRAM = "https://instagram.com/innovatequestlda";
-export const FACEBOOK = "https://facebook.com/innovatequestlda";
+export const INSTAGRAM = "https://www.instagram.com/innovate_quest/";
 export const LOCATION = "Grande Lisboa";
 
 export function whatsappUrl(message: string) {
