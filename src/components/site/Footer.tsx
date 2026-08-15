@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import logoAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
 import { EMAIL, FACEBOOK, INSTAGRAM, LOCATION, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
 
 export function Footer() {
@@ -8,11 +9,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2 font-display text-xl font-bold text-white">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground">
-                IQ
-              </span>
-              Innovate Quest
+            <div className="flex items-center">
+              <img
+                src={logoAsset.url}
+                alt="Innovate Quest Home Expert"
+                className="h-12 w-auto"
+              />
             </div>
             <p className="mt-4 max-w-sm text-sm text-white/60">
               Remodelações para particulares e investidores. Rigor, prazo e um acabamento à altura
