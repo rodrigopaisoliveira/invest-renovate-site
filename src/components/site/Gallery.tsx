@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, Instagram } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Instagram, MapPin } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import antes from "@/assets/ANTES.jpg.asset.json";
 import antes2 from "@/assets/ANTES2.jpg.asset.json";
@@ -17,6 +17,7 @@ export const GALLERY_URL =
 
 type Pair = {
   title: string;
+  location: string;
   before: { src: string; alt: string; objectPosition?: string }[];
   after: { src: string; alt: string; objectPosition?: string }[];
 };
@@ -24,26 +25,31 @@ type Pair = {
 const pairs: Pair[] = [
   {
     title: "Remodelação total — sala e cozinha em open space",
+    location: "Ericeira",
     before: [{ src: antes.url, alt: "Sala antes da remodelação, com instalação elétrica à vista" }],
     after: [{ src: depois.url, alt: "Sala e cozinha depois da remodelação, com móvel de TV em pladur" }],
   },
   {
     title: "Sala — móvel de TV em pladur com iluminação LED",
+    location: "Ericeira",
     before: [{ src: antess.url, alt: "Estrutura em pladur do móvel de TV durante a obra" }],
     after: [{ src: depoiss.url, alt: "Móvel de TV em pladur acabado, com nichos e iluminação LED" }],
   },
   {
     title: "Remodelação total — casa de banho suite",
+    location: "Benfica",
     before: [{ src: antes2.url, alt: "Casa de banho em obra, durante a colocação de cerâmico" }],
     after: [{ src: depois2.url, alt: "Casa de banho depois da remodelação, com base de duche e sanita suspensa" }],
   },
   {
     title: "Remodelação total — casa de banho social",
-    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação", objectPosition: "bottom" }],
+    location: "Benfica",
+    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação", objectPosition: "center 85%" }],
     after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
   },
   {
     title: "WC — remodelação completa",
+    location: "Oeiras",
     before: [{ src: antess1.url, alt: "WC antigo antes da remodelação, com azulejo desatualizado" }],
     after: [{ src: depoiss1.url, alt: "WC depois da remodelação, com espelho LED e móvel suspenso" }],
   },
@@ -188,9 +194,15 @@ export function Gallery() {
                         eager={i === 0}
                       />
                     </div>
-                    <p className="mt-3 text-center text-sm font-medium text-muted-foreground">
-                      {pair.title}
-                    </p>
+                    <div className="mt-3 flex flex-col items-center gap-1">
+                      <p className="text-center text-sm font-medium text-muted-foreground">
+                        {pair.title}
+                      </p>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-primary">
+                        <MapPin className="h-3 w-3" />
+                        {pair.location}
+                      </span>
+                    </div>
                   </div>
                 ))}
                 <div className="w-full shrink-0">
