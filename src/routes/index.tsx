@@ -3,6 +3,7 @@ import { Toaster } from "sonner";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Services } from "@/components/site/Services";
+import { Gallery } from "@/components/site/Gallery";
 import { About } from "@/components/site/About";
 import { Contact } from "@/components/site/Contact";
 import { QuoteForm } from "@/components/site/QuoteForm";
@@ -38,6 +39,7 @@ function Landing() {
       <main>
         <Hero />
         <Services />
+        <Gallery />
         <About />
         <Contact />
         <QuoteForm />
