@@ -206,35 +206,37 @@ export function Gallery() {
                   </div>
                 ))}
                 <div className="w-full shrink-0">
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <a
-                      href={GALLERY_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring sm:p-10"
-                    >
-                      <div className="rounded-full bg-primary p-3 text-primary-foreground">
-                        <ExternalLink className="h-6 w-6" />
-                      </div>
-                      <span className="font-display text-lg font-semibold text-foreground">
-                        Ver mais fotos
-                      </span>
-                      <span className="text-sm text-muted-foreground">Abrir galeria no Google Drive</span>
-                    </a>
-                    <a
-                      href="https://www.instagram.com/innovate_quest/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring sm:p-10"
-                    >
-                      <div className="rounded-full bg-primary p-3 text-primary-foreground">
-                        <Instagram className="h-6 w-6" />
-                      </div>
-                      <span className="font-display text-lg font-semibold text-foreground">
-                        Ver no Instagram
-                      </span>
-                      <span className="text-sm text-muted-foreground">@innovate_quest</span>
-                    </a>
+                  <div className="flex items-center justify-center">
+                    <div className="grid w-full max-w-3xl gap-4 sm:grid-cols-2">
+                      <a
+                        href={GALLERY_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex aspect-square flex-col items-center justify-center gap-4 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                      >
+                        <div className="rounded-full bg-primary p-4 text-primary-foreground">
+                          <ExternalLink className="h-8 w-8" />
+                        </div>
+                        <span className="font-display text-xl font-semibold text-foreground">
+                          Ver mais fotos
+                        </span>
+                        <span className="text-base text-muted-foreground">Abrir galeria no Google Drive</span>
+                      </a>
+                      <a
+                        href="https://www.instagram.com/innovate_quest/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex aspect-square flex-col items-center justify-center gap-4 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                      >
+                        <div className="rounded-full bg-primary p-4 text-primary-foreground">
+                          <Instagram className="h-8 w-8" />
+                        </div>
+                        <span className="font-display text-xl font-semibold text-foreground">
+                          Ver no Instagram
+                        </span>
+                        <span className="text-base text-muted-foreground">@innovate_quest</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
