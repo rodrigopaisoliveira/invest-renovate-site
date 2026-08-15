@@ -15,8 +15,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pt-24 pb-16 sm:px-6 lg:px-8">
-        <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-white backdrop-blur">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pt-28 pb-24 sm:px-6 sm:pt-32 sm:pb-28 lg:px-8 lg:pb-32">
+        <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-white backdrop-blur sm:mb-6">
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
           Innovate Quest Lda · Remodelações
         </span>
@@ -25,12 +25,12 @@ export function Hero() {
           Construímos Conforto. <span className="text-primary">Remodelamos com Inovação</span>.
         </h1>
 
-        <p className="mt-6 max-w-xl text-base text-white/85 sm:text-lg">
+        <p className="mt-4 max-w-xl text-base text-white/85 sm:mt-6 sm:text-lg">
           Há mais de 10 anos a renovar espaços em toda a Grande Lisboa. Garantia,
           durabilidade e orçamentos em 48 horas.
         </p>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
           <a
             href="#orcamento"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-105"
@@ -47,7 +47,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/20 pt-8">
+        <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/20 pt-6 sm:mt-12 sm:pt-8">
           {[
             { n: "10+", l: "Anos de experiência" },
             { n: "48h", l: "Resposta ao orçamento" },
