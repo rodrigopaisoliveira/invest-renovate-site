@@ -34,13 +34,13 @@ const pairs: Pair[] = [
   },
   {
     title: "Remodelação total — casa de banho suite",
-    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação" }],
-    after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
+    before: [{ src: antes2.url, alt: "Casa de banho em obra, durante a colocação de cerâmico" }],
+    after: [{ src: depois2.url, alt: "Casa de banho depois da remodelação, com base de duche e sanita suspensa" }],
   },
   {
     title: "Remodelação total — casa de banho social",
-    before: [{ src: antes1.url, alt: "Casa de banho antes da remodelação, com azulejo antigo" }],
-    after: [{ src: depois1.url, alt: "Casa de banho depois da remodelação, com cerâmico efeito mármore" }],
+    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação" }],
+    after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
   },
   {
     title: "WC — remodelação completa",
