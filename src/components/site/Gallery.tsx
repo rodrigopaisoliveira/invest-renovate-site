@@ -213,11 +213,11 @@ function Carousel({
                   Quer ver mais deste projeto?
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Explore fotos e vídeos organizados na pasta do OneDrive.
+                  Explore fotos e vídeos organizados na pasta do Google Drive.
                 </p>
               </div>
               <a
-                href={ONEDRIVE_GALLERY_URL}
+                href={GALLERY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-105"
