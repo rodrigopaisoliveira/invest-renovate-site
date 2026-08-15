@@ -62,7 +62,7 @@ function ImageCard({
   onClick,
   eager = false,
 }: {
-  img: { src: string; alt: string };
+  img: { src: string; alt: string; objectPosition?: string };
   label: "Antes" | "Depois";
   onClick: () => void;
   eager?: boolean;
@@ -77,6 +77,7 @@ function ImageCard({
         alt={img.alt}
         loading={eager ? "eager" : "lazy"}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
       />
       <span
         className={
