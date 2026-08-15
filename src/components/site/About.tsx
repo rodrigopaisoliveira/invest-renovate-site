@@ -17,13 +17,13 @@ export function About() {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               <img
-                src={bathroom}
+                src={bathroom.url}
                 alt="Trabalho de remodelação"
                 loading="lazy"
                 className="aspect-[3/4] w-full rounded-3xl object-cover shadow-card"
               />
               <img
-                src={kitchen}
+                src={kitchen.url}
                 alt="Cozinha finalizada"
                 loading="lazy"
                 className="mt-12 aspect-[3/4] w-full rounded-3xl object-cover shadow-card"
