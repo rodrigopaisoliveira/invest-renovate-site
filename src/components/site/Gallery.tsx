@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight, ExternalLink, Instagram } from "lucide-react
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import antes from "@/assets/ANTES.jpg.asset.json";
 import antes1 from "@/assets/ANTES1.jpg.asset.json";
+import antes2 from "@/assets/ANTES2.jpg.asset.json";
+import depois2 from "@/assets/DEPOIS2.jpg.asset.json";
 import antes3 from "@/assets/ANTES3.jpg.asset.json";
 import depois3 from "@/assets/DEPOIS3.jpg.asset.json";
 import antess from "@/assets/ANTESS.jpg.asset.json";
