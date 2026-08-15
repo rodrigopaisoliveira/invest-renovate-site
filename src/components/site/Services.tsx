@@ -1,7 +1,7 @@
 import kitchen from "@/assets/project-kitchen.jpg";
 import investor from "@/assets/project-investor.jpg";
-import servico1 from "@/assets/servico-1.png.asset.json";
-import servico2 from "@/assets/servico-2b.jpg.asset.json";
+import servico1 from "@/assets/servico-1.jpg.asset.json";
+import servico2 from "@/assets/servico-2.jpg.asset.json";
 import servico3 from "@/assets/servico-3.jpg.asset.json";
 import { Check, Home, Building2 } from "lucide-react";
 
