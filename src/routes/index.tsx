@@ -26,9 +26,27 @@ export const Route = createFileRoute("/")({
           "Construímos conforto. Remodelamos com inovação. 10+ anos de experiência na Grande Lisboa.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://innovatequest.pt/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://innovatequest.pt/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HomeAndConstructionBusiness",
+          name: "Innovate Quest Lda",
+          url: "https://innovatequest.pt/",
+          telephone: "+351924240781",
+          email: "innovatequestlda@gmail.com",
+          areaServed: "Grande Lisboa, Portugal",
+          sameAs: ["https://www.instagram.com/innovate_quest/"],
+        }),
+      },
+    ],
   }),
+
   component: Landing,
 });
 
