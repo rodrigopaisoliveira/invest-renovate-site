@@ -36,14 +36,23 @@ export function Contact() {
 
           <a
             href={`tel:${PHONE_NUMBER.tel}`}
-            className="group rounded-2xl bg-card p-8 shadow-card transition-transform hover:-translate-y-1"
+            className="group flex flex-col items-center justify-center gap-4 rounded-2xl bg-card p-8 shadow-card transition-transform hover:-translate-y-1"
           >
             <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary-dark">
               <Phone className="h-5 w-5" />
             </div>
-            <h3 className="mt-6 font-display text-xl font-bold text-foreground">Chamada</h3>
-            <p className="mt-1 text-sm text-muted-foreground">Segunda a sexta, 9h – 18h</p>
-            <p className="mt-4 font-semibold text-primary-dark">{PHONE_NUMBER.display}</p>
+            <div className="text-center">
+              <h3 className="font-display text-base font-bold text-foreground">Chamada</h3>
+              <p className="text-xs text-muted-foreground">Segunda a sexta, 9h – 18h</p>
+            </div>
+            <div className="rounded-xl border border-primary/20 bg-primary/5 px-6 py-3 text-center transition-colors group-hover:border-primary/40">
+              <span className="block font-display text-2xl font-bold tracking-tight text-foreground">
+                924 240 781
+              </span>
+              <span className="mt-0.5 block text-xs font-medium text-primary">
+                +351 · Portugal
+              </span>
+            </div>
           </a>
 
           <a
