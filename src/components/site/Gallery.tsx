@@ -17,8 +17,8 @@ export const GALLERY_URL =
 
 type Pair = {
   title: string;
-  before: { src: string; alt: string }[];
-  after: { src: string; alt: string }[];
+  before: { src: string; alt: string; objectPosition?: string }[];
+  after: { src: string; alt: string; objectPosition?: string }[];
 };
 
 const pairs: Pair[] = [
@@ -39,7 +39,7 @@ const pairs: Pair[] = [
   },
   {
     title: "Remodelação total — casa de banho social",
-    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação" }],
+    before: [{ src: antes3.url, alt: "Casa de banho antiga com banheira e azulejo bege antes da remodelação", objectPosition: "bottom" }],
     after: [{ src: depois3.url, alt: "Casa de banho renovada com móvel suspenso, lavatórios de apoio e duche com vidro" }],
   },
   {
@@ -62,7 +62,7 @@ function ImageCard({
   onClick,
   eager = false,
 }: {
-  img: { src: string; alt: string };
+  img: { src: string; alt: string; objectPosition?: string };
   label: "Antes" | "Depois";
   onClick: () => void;
   eager?: boolean;
@@ -77,6 +77,7 @@ function ImageCard({
         alt={img.alt}
         loading={eager ? "eager" : "lazy"}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
       />
       <span
         className={
