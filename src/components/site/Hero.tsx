@@ -1,6 +1,6 @@
 import hero from "@/assets/hero-renovation.jpg";
 import { ArrowRight, Phone } from "lucide-react";
-import { PHONE_NUMBER } from "@/lib/contact";
+import { PHONE_NUMBERS } from "@/lib/contact";
 
 export function Hero() {
   return (
@@ -38,13 +38,19 @@ export function Hero() {
             Pedir Orçamento
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-          <a
-            href={`tel:${PHONE_NUMBER.tel}`}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
-          >
-            <Phone className="h-4 w-4" />
-            {PHONE_NUMBER.display}
-          </a>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            {PHONE_NUMBERS.map((p) => (
+              <a
+                key={p.tel}
+                href={`tel:${p.tel}`}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20 sm:px-6 sm:py-4 sm:text-base"
+              >
+                <Phone className="h-4 w-4" />
+                <span>{p.display}</span>
+                <span className="hidden opacity-70 sm:inline">· {p.name}</span>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/20 pt-6 sm:mt-12 sm:pt-8">
