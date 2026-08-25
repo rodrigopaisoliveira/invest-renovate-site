@@ -17,12 +17,7 @@ export function Contact() {
         </div>
 
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <a
-            href={whatsappUrl("Olá! Gostaria de pedir informações sobre uma remodelação.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-2xl bg-whatsapp p-8 text-whatsapp-foreground shadow-card transition-transform hover:-translate-y-1"
-          >
+          <div className="group relative overflow-hidden rounded-2xl bg-whatsapp p-8 text-whatsapp-foreground shadow-card transition-transform hover:-translate-y-1">
             <div className="flex items-center gap-3">
               <WhatsAppIcon className="h-8 w-8" />
               <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
@@ -31,9 +26,22 @@ export function Contact() {
             </div>
             <h3 className="mt-6 font-display text-xl font-bold">WhatsApp</h3>
             <p className="mt-1 text-sm opacity-90">Resposta rápida em minutos</p>
-            <p className="mt-4 font-semibold">{PHONE_NUMBER.display}</p>
-            <p className="mt-1 text-xs opacity-80">{PHONE_NUMBER.name}</p>
-          </a>
+            <ul className="mt-4 space-y-2">
+              {PHONE_NUMBERS.map((p) => (
+                <li key={p.whatsapp}>
+                  <a
+                    href={whatsappUrl("Olá! Gostaria de pedir informações sobre uma remodelação.", p.whatsapp)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-xl bg-white/10 px-3 py-2 transition-colors hover:bg-white/20"
+                  >
+                    <span className="text-xs opacity-80">{p.name}</span>
+                    <span className="font-semibold">{p.display}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="group rounded-2xl bg-card p-8 shadow-card transition-transform hover:-translate-y-1">
             <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary-dark">
