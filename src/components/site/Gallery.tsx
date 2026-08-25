@@ -201,20 +201,28 @@ export function Gallery() {
                   </div>
                 ))}
                 <div className="w-full shrink-0">
-                  <div className="flex items-center justify-center">
+                  <div className="flex min-h-[360px] items-center justify-center sm:min-h-[420px]">
                     <a
                       href="https://www.instagram.com/innovate_quest/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex aspect-square max-w-sm flex-col items-center justify-center gap-4 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                      className="flex w-full max-w-md flex-col items-center justify-center gap-5 rounded-3xl bg-accent px-10 py-12 text-center shadow-sm transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring sm:max-w-lg sm:px-14 sm:py-16"
                     >
-                      <div className="rounded-full bg-primary p-4 text-primary-foreground">
-                        <Instagram className="h-8 w-8" />
+                      <div className="rounded-full bg-primary p-5 text-primary-foreground sm:p-6">
+                        <Instagram className="h-10 w-10 sm:h-12 sm:w-12" />
                       </div>
-                      <span className="font-display text-xl font-semibold text-foreground">
-                        Ver no Instagram
+                      <div className="space-y-1">
+                        <span className="block font-display text-2xl font-semibold text-foreground sm:text-3xl">
+                          Ver no Instagram
+                        </span>
+                        <span className="block text-base text-muted-foreground sm:text-lg">
+                          @innovate_quest
+                        </span>
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground">
+                        Seguir página
+                        <ChevronRight className="h-4 w-4" />
                       </span>
-                      <span className="text-base text-muted-foreground">@innovate_quest</span>
                     </a>
                   </div>
                 </div>
