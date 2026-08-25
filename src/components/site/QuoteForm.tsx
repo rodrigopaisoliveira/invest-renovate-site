@@ -1,9 +1,18 @@
+"use client";
+
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Mail, Send } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { EMAIL, whatsappUrl } from "@/lib/contact";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Indique o seu nome").max(80),
@@ -105,20 +114,22 @@ export function QuoteForm() {
           </div>
 
           <Field label="Tipo de projeto" error={errors.type}>
-            <select
-              value={form.type}
-              onChange={(e) => set("type", e.target.value)}
-              className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
-            >
-              <option value="" className="bg-primary-dark">
-                Selecione uma opção
-              </option>
-              {types.map((t) => (
-                <option key={t} value={t} className="bg-primary-dark">
-                  {t}
-                </option>
-              ))}
-            </select>
+            <Select value={form.type} onValueChange={(v) => set("type", v)}>
+              <SelectTrigger className="h-auto w-full rounded-xl border-white/15 bg-white/5 px-4 py-3 text-white focus:border-primary focus:ring-primary/40 data-[placeholder]:text-white/40 [&>span]:text-white">
+                <SelectValue placeholder="Selecione uma opção" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl border-white/15 bg-primary-dark text-white shadow-xl">
+                {types.map((t) => (
+                  <SelectItem
+                    key={t}
+                    value={t}
+                    className="rounded-lg text-white/90 focus:bg-white/10 focus:text-white"
+                  >
+                    {t}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </Field>
 
           <Field label="Breve descrição" error={errors.description}>
