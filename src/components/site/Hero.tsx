@@ -38,19 +38,6 @@ export function Hero() {
             Pedir Orçamento
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-          <div className="flex flex-col gap-2">
-            {PHONE_NUMBERS.map((p) => (
-              <a
-                key={p.tel}
-                href={`tel:${p.tel}`}
-                className="inline-flex w-fit items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                <span>{p.display}</span>
-                <span className="opacity-70">· {p.name}</span>
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/20 pt-6 sm:mt-12 sm:pt-8">
