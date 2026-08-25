@@ -11,7 +11,7 @@ export function Contact() {
           <h2 className="mt-3 font-display text-3xl font-bold text-foreground sm:text-5xl">
             Vamos falar sobre o seu projeto
           </h2>
-          <p classname="mt-4 text-base text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-base text-muted-foreground sm:text-lg">
             A forma mais rápida é pelo WhatsApp. Respondemos em minutos, em horário útil.
           </p>
         </div>
