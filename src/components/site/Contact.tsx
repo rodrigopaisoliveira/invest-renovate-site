@@ -1,8 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { WHATSAPP_NUMBER, PHONE_NUMBERS, PHONE_NUMBER, EMAIL, whatsappUrl } from "@/lib/contact";
+import { PHONE_NUMBERS, EMAIL, whatsappUrl } from "@/lib/contact";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export function Contact() {
+  const [whatsappOpen, setWhatsappOpen] = useState(false);
+
   return (
     <section id="contacto" className="bg-secondary py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -17,31 +29,47 @@ export function Contact() {
         </div>
 
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="group relative overflow-hidden rounded-2xl bg-whatsapp p-8 text-whatsapp-foreground shadow-card transition-transform hover:-translate-y-1">
-            <div className="flex items-center gap-3">
-              <WhatsAppIcon className="h-8 w-8" />
-              <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
-                Recomendado
-              </span>
+          <Dialog open={whatsappOpen} onOpenChange={setWhatsappOpen}>
+            <div className="group relative overflow-hidden rounded-2xl bg-whatsapp p-8 text-whatsapp-foreground shadow-card transition-transform hover:-translate-y-1">
+              <div className="flex items-center gap-3">
+                <WhatsAppIcon className="h-8 w-8" />
+                <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                  Recomendado
+                </span>
+              </div>
+              <h3 className="mt-6 font-display text-xl font-bold">WhatsApp</h3>
+              <p className="mt-1 text-sm opacity-90">Resposta rápida em minutos</p>
+              <button
+                type="button"
+                onClick={() => setWhatsappOpen(true)}
+                className="mt-6 w-full rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold transition-colors hover:bg-white/20"
+              >
+                Fale connosco
+              </button>
             </div>
-            <h3 className="mt-6 font-display text-xl font-bold">WhatsApp</h3>
-            <p className="mt-1 text-sm opacity-90">Resposta rápida em minutos</p>
-            <ul className="mt-4 space-y-2">
-              {PHONE_NUMBERS.map((p) => (
-                <li key={p.whatsapp}>
+
+            <DialogContent className="sm:max-w-sm">
+              <DialogHeader>
+                <DialogTitle>Enviar mensagem no WhatsApp</DialogTitle>
+                <DialogDescription>Escolha quem quer contactar.</DialogDescription>
+              </DialogHeader>
+              <div className="mt-4 space-y-3">
+                {PHONE_NUMBERS.map((p) => (
                   <a
+                    key={p.whatsapp}
                     href={whatsappUrl("Olá! Gostaria de pedir informações sobre uma remodelação.", p.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col rounded-xl bg-white/10 px-3 py-2 transition-colors hover:bg-white/20"
+                    onClick={() => setWhatsappOpen(false)}
+                    className="flex items-center justify-between rounded-xl bg-secondary px-4 py-3 transition-colors hover:bg-accent"
                   >
-                    <span className="text-[10px] opacity-80">{p.name}</span>
-                    <span className="font-semibold leading-tight">{p.display}</span>
+                    <span className="text-sm font-medium text-foreground">{p.name}</span>
+                    <span className="font-semibold text-primary-dark">{p.display}</span>
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <div className="group rounded-2xl bg-card p-8 shadow-card transition-transform hover:-translate-y-1">
             <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary-dark">
@@ -51,7 +79,7 @@ export function Contact() {
             <p className="mt-1 text-sm text-muted-foreground">Segunda a sexta, 9h – 18h</p>
             <ul className="mt-4 space-y-2">
               {PHONE_NUMBERS.map((p) => (
-                <li key={p.tel}>
+                <li key={p.tel} className="w-fit">
                   <a
                     href={`tel:${p.tel}`}
                     className="flex flex-col rounded-xl bg-secondary px-3 py-2 transition-colors hover:bg-accent"
@@ -81,9 +109,6 @@ export function Contact() {
           <MapPin className="h-4 w-4 text-primary" />
           A trabalhar em toda a Grande Lisboa
         </div>
-
-        {/* Suppress unused warning for WHATSAPP_NUMBER */}
-        <span className="hidden">{WHATSAPP_NUMBER}</span>
       </div>
     </section>
   );
