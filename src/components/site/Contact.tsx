@@ -33,10 +33,10 @@ export function Contact() {
                     href={whatsappUrl("Olá! Gostaria de pedir informações sobre uma remodelação.", p.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-white/10 px-3 py-2 transition-colors hover:bg-white/20"
+                    className="flex flex-col rounded-xl bg-white/10 px-3 py-2 transition-colors hover:bg-white/20"
                   >
-                    <span className="text-xs opacity-80">{p.name}</span>
-                    <span className="font-semibold">{p.display}</span>
+                    <span className="text-[10px] opacity-80">{p.name}</span>
+                    <span className="font-semibold leading-tight">{p.display}</span>
                   </a>
                 </li>
               ))}
@@ -54,10 +54,10 @@ export function Contact() {
                 <li key={p.tel}>
                   <a
                     href={`tel:${p.tel}`}
-                    className="flex items-center justify-between rounded-xl bg-secondary px-3 py-2 transition-colors hover:bg-accent"
+                    className="flex flex-col rounded-xl bg-secondary px-3 py-2 transition-colors hover:bg-accent"
                   >
-                    <span className="text-sm text-muted-foreground">{p.name}</span>
-                    <span className="font-semibold text-primary-dark">{p.display}</span>
+                    <span className="text-[10px] text-muted-foreground">{p.name}</span>
+                    <span className="font-semibold leading-tight text-primary-dark">{p.display}</span>
                   </a>
                 </li>
               ))}
