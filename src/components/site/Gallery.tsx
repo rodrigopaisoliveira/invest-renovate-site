@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, Instagram, MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, Instagram, MapPin } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import antes from "@/assets/ANTES.jpg.asset.json";
 import antes2 from "@/assets/ANTES2.jpg.asset.json";
@@ -11,9 +11,6 @@ import depois from "@/assets/DEPOIS.webp.asset.json";
 import depoiss from "@/assets/DEPOISS.jpg.asset.json";
 import antess1 from "@/assets/ANTESS1.jpg.asset.json";
 import depoiss1 from "@/assets/DEPOISS1.jpg.asset.json";
-
-export const GALLERY_URL =
-  "https://drive.google.com/drive/folders/1ij9ru4r5ifwchI3IOFqhS5AvY77O36rp?usp=sharing";
 
 type Pair = {
   title: string;
@@ -133,8 +130,6 @@ export function Gallery() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, nextLightbox, prevLightbox]);
 
-  const currentPair = pairs[slide];
-
   return (
     <section id="galeria" className="bg-accent py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -207,36 +202,20 @@ export function Gallery() {
                 ))}
                 <div className="w-full shrink-0">
                   <div className="flex items-center justify-center">
-                    <div className="grid w-full max-w-3xl gap-4 sm:grid-cols-2">
-                      <a
-                        href={GALLERY_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex aspect-square flex-col items-center justify-center gap-4 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
-                      >
-                        <div className="rounded-full bg-primary p-4 text-primary-foreground">
-                          <ExternalLink className="h-8 w-8" />
-                        </div>
-                        <span className="font-display text-xl font-semibold text-foreground">
-                          Ver mais fotos
-                        </span>
-                        <span className="text-base text-muted-foreground">Abrir galeria no Google Drive</span>
-                      </a>
-                      <a
-                        href="https://www.instagram.com/innovate_quest/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex aspect-square flex-col items-center justify-center gap-4 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
-                      >
-                        <div className="rounded-full bg-primary p-4 text-primary-foreground">
-                          <Instagram className="h-8 w-8" />
-                        </div>
-                        <span className="font-display text-xl font-semibold text-foreground">
-                          Ver no Instagram
-                        </span>
-                        <span className="text-base text-muted-foreground">@innovate_quest</span>
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.instagram.com/innovate_quest/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex aspect-square max-w-sm flex-col items-center justify-center gap-4 rounded-2xl bg-accent p-8 text-center transition-colors hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                      <div className="rounded-full bg-primary p-4 text-primary-foreground">
+                        <Instagram className="h-8 w-8" />
+                      </div>
+                      <span className="font-display text-xl font-semibold text-foreground">
+                        Ver no Instagram
+                      </span>
+                      <span className="text-base text-muted-foreground">@innovate_quest</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -256,18 +235,6 @@ export function Gallery() {
                 ))}
               </div>
             </div>
-          </div>
-
-          <div className="mt-4 text-center">
-            <a
-              href={GALLERY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-            >
-              Ver galeria completa
-              <ExternalLink className="h-4 w-4" />
-            </a>
           </div>
         </div>
       </div>
