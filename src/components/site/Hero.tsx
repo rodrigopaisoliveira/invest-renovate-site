@@ -1,6 +1,5 @@
 import hero from "@/assets/hero-renovation.jpg";
-import { ArrowRight, Phone } from "lucide-react";
-import { PHONE_NUMBERS } from "@/lib/contact";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
