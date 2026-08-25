@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { WHATSAPP_NUMBER, PHONE_NUMBER, EMAIL, whatsappUrl } from "@/lib/contact";
+import { WHATSAPP_NUMBER, PHONE_NUMBERS, PHONE_NUMBER, EMAIL, whatsappUrl } from "@/lib/contact";
 
 export function Contact() {
   return (
@@ -11,7 +11,7 @@ export function Contact() {
           <h2 className="mt-3 font-display text-3xl font-bold text-foreground sm:text-5xl">
             Vamos falar sobre o seu projeto
           </h2>
-          <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+          <p classname="mt-4 text-base text-muted-foreground sm:text-lg">
             A forma mais rápida é pelo WhatsApp. Respondemos em minutos, em horário útil.
           </p>
         </div>
@@ -32,19 +32,29 @@ export function Contact() {
             <h3 className="mt-6 font-display text-xl font-bold">WhatsApp</h3>
             <p className="mt-1 text-sm opacity-90">Resposta rápida em minutos</p>
             <p className="mt-4 font-semibold">{PHONE_NUMBER.display}</p>
+            <p className="mt-1 text-xs opacity-80">{PHONE_NUMBER.name}</p>
           </a>
 
-          <a
-            href={`tel:${PHONE_NUMBER.tel}`}
-            className="group rounded-2xl bg-card p-8 shadow-card transition-transform hover:-translate-y-1"
-          >
+          <div className="group rounded-2xl bg-card p-8 shadow-card transition-transform hover:-translate-y-1">
             <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary-dark">
               <Phone className="h-5 w-5" />
             </div>
             <h3 className="mt-6 font-display text-xl font-bold text-foreground">Chamada</h3>
             <p className="mt-1 text-sm text-muted-foreground">Segunda a sexta, 9h – 18h</p>
-            <p className="mt-4 font-semibold text-primary-dark">{PHONE_NUMBER.display}</p>
-          </a>
+            <ul className="mt-4 space-y-2">
+              {PHONE_NUMBERS.map((p) => (
+                <li key={p.tel}>
+                  <a
+                    href={`tel:${p.tel}`}
+                    className="flex items-center justify-between rounded-xl bg-secondary px-3 py-2 transition-colors hover:bg-accent"
+                  >
+                    <span className="text-sm text-muted-foreground">{p.name}</span>
+                    <span className="font-semibold text-primary-dark">{p.display}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <a
             href={`mailto:${EMAIL}`}
