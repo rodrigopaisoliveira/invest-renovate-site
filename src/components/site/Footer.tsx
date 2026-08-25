@@ -1,7 +1,7 @@
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import logoAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
-import { EMAIL, INSTAGRAM, LOCATION, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
+import { EMAIL, INSTAGRAM, LOCATION, PHONE_NUMBERS, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -46,14 +46,16 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <a href={whatsappUrl("Olá!")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary">
-                  <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+                  <WhatsAppIcon className="h-4 w-4" /> WhatsApp — {PHONE_NUMBER.display}
                 </a>
               </li>
-              <li>
-                <a href={`tel:${PHONE_NUMBER.tel}`} className="inline-flex items-center gap-2 hover:text-primary">
-                  <Phone className="h-4 w-4" /> {PHONE_NUMBER.display}
-                </a>
-              </li>
+              {PHONE_NUMBERS.map((p) => (
+                <li key={p.tel}>
+                  <a href={`tel:${p.tel}`} className="inline-flex items-center gap-2 hover:text-primary">
+                    <Phone className="h-4 w-4" /> {p.display} — {p.name}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 hover:text-primary">
                   <Mail className="h-4 w-4" /> {EMAIL}

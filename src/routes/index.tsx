@@ -38,7 +38,7 @@ export const Route = createFileRoute("/")({
           "@type": "HomeAndConstructionBusiness",
           name: "Innovate Quest Lda",
           url: "https://innovatequest.pt/",
-          telephone: "+351924240781",
+          telephone: ["+351924240781", "+351918181582"],
           email: "innovatequestlda@gmail.com",
           areaServed: "Grande Lisboa, Portugal",
           sameAs: ["https://www.instagram.com/innovate_quest/"],
