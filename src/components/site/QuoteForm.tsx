@@ -40,6 +40,28 @@ function buildMessage(v: z.infer<typeof schema>) {
 ${v.description}`;
 }
 
+function buildEmailBody(v: z.infer<typeof schema>) {
+  return [
+    "Novo pedido de orçamento — InnovateQuest",
+    "",
+    `Nome: ${v.name}`,
+    `Contacto: ${v.contact}`,
+    `Tipo de projeto: ${v.type}`,
+    "",
+    "Descrição:",
+    v.description,
+  ].join("\r\n");
+}
+
+function openMailto(url: string) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
 export function QuoteForm() {
   const [form, setForm] = useState({ name: "", contact: "", type: "", description: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -54,14 +76,28 @@ export function QuoteForm() {
       return;
     }
     setErrors({});
-    const message = buildMessage(parsed.data);
 
     if (channel === "whatsapp") {
-      window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+      window.open(whatsappUrl(buildMessage(parsed.data)), "_blank", "noopener,noreferrer");
       toast.success("A abrir WhatsApp…");
     } else {
       const subject = "Pedido de orçamento — InnovateQuest";
-      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+      const body = buildEmailBody(parsed.data).slice(0, 1400);
+
+      openMailto(
+        `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      );
+
+      setTimeout(async () => {
+        try {
+          await navigator.clipboard.writeText(`Para: ${EMAIL}\n\n${body}`);
+          toast("Se o email não abriu, o pedido foi copiado para a área de transferência.", {
+            description: `Envie para ${EMAIL}`,
+          });
+        } catch {
+          toast(`Se o email não abriu, escreva para ${EMAIL}`);
+        }
+      }, 1200);
     }
   };
 
