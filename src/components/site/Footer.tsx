@@ -1,7 +1,15 @@
+import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import logoAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
-import { EMAIL, INSTAGRAM, LOCATION, PHONE_NUMBERS, PHONE_NUMBER, whatsappUrl } from "@/lib/contact";
+import {
+  EMAIL,
+  INSTAGRAM,
+  LOCATION,
+  PHONE_NUMBERS,
+  PHONE_NUMBER,
+  whatsappUrl,
+} from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -10,15 +18,11 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <a href="#inicio" className="inline-flex items-center">
-              <img
-                src={logoAsset.url}
-                alt="Innovate Quest Home Expert"
-                className="h-14 w-auto"
-              />
+              <img src={logoAsset.url} alt="Innovate Quest Home Expert" className="h-14 w-auto" />
             </a>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
-              Há mais de 10 anos a renovar espaços em Grande Lisboa. Rigor, prazo e um acabamento
-              à altura do seu projeto — de particulares a investidores.
+              Há mais de 10 anos a renovar espaços em Grande Lisboa. Rigor, prazo e um acabamento à
+              altura do seu projeto — de particulares a investidores.
             </p>
             <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white/70">
               <MapPin className="h-4 w-4 text-primary" /> {LOCATION}
@@ -30,12 +34,36 @@ export function Footer() {
               Navegação
             </h4>
             <ul className="mt-5 space-y-2.5 text-sm">
-              <li><a href="#inicio" className="transition-colors hover:text-primary">Início</a></li>
-              <li><a href="#servicos" className="transition-colors hover:text-primary">Serviços</a></li>
-              <li><a href="#galeria" className="transition-colors hover:text-primary">Galeria</a></li>
-              <li><a href="#sobre" className="transition-colors hover:text-primary">Sobre nós</a></li>
-              <li><a href="#contacto" className="transition-colors hover:text-primary">Contactos</a></li>
-              <li><a href="#orcamento" className="transition-colors hover:text-primary">Pedir Orçamento</a></li>
+              <li>
+                <a href="#inicio" className="transition-colors hover:text-primary">
+                  Início
+                </a>
+              </li>
+              <li>
+                <a href="#servicos" className="transition-colors hover:text-primary">
+                  Serviços
+                </a>
+              </li>
+              <li>
+                <a href="#galeria" className="transition-colors hover:text-primary">
+                  Galeria
+                </a>
+              </li>
+              <li>
+                <a href="#sobre" className="transition-colors hover:text-primary">
+                  Sobre nós
+                </a>
+              </li>
+              <li>
+                <a href="#contacto" className="transition-colors hover:text-primary">
+                  Contactos
+                </a>
+              </li>
+              <li>
+                <a href="#orcamento" className="transition-colors hover:text-primary">
+                  Pedir Orçamento
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -66,7 +94,9 @@ export function Footer() {
                     <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/5 transition-colors group-hover:bg-white/10">
                       <Phone className="h-4 w-4" />
                     </span>
-                    <span>{p.display} — {p.name}</span>
+                    <span>
+                      {p.display} — {p.name}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -99,7 +129,17 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
-          <span>© {new Date().getFullYear()} Innovate Quest Lda. Todos os direitos reservados.</span>
+          <span className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <span>
+              © {new Date().getFullYear()} Innovate Quest Lda. Todos os direitos reservados.
+            </span>
+            <Link
+              to="/politica-de-privacidade"
+              className="underline-offset-4 transition-colors hover:text-primary hover:underline"
+            >
+              Política de Privacidade
+            </Link>
+          </span>
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
             Feito com rigor · Grande Lisboa, Portugal

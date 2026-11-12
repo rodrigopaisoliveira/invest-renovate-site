@@ -20,6 +20,11 @@ export const PHONE_NUMBERS = [
 export const PHONE_NUMBER = PHONE_NUMBERS[0];
 
 export const EMAIL = "innovatequestlda@gmail.com";
+export const COMPANY = {
+  name: "Innovate Quest Lda",
+  nif: "518292100",
+  address: "Avenida D. Nuno Álvares Pereira n.º 11",
+};
 export const INSTAGRAM = "https://www.instagram.com/innovate_quest/";
 export const LOCATION = "Grande Lisboa";
 
