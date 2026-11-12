@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { META_PIXEL_ID, OPEN_PREFERENCES_EVENT } from "@/lib/meta-pixel";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import logoAsset from "@/assets/innovate-quest-logo-white.png.asset.json";
@@ -139,6 +140,15 @@ export function Footer() {
             >
               Política de Privacidade
             </Link>
+            {META_PIXEL_ID && (
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT))}
+                className="underline-offset-4 transition-colors hover:text-primary hover:underline"
+              >
+                Preferências de cookies
+              </button>
+            )}
           </span>
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />

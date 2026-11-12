@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Mail, Send } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { EMAIL, whatsappUrl } from "@/lib/contact";
+import { trackEvent } from "@/lib/meta-pixel";
 import {
   Select,
   SelectContent,
@@ -76,6 +77,7 @@ export function QuoteForm() {
       return;
     }
     setErrors({});
+    trackEvent("Lead");
 
     if (channel === "whatsapp") {
       window.open(whatsappUrl(buildMessage(parsed.data)), "_blank", "noopener,noreferrer");
@@ -85,7 +87,7 @@ export function QuoteForm() {
       const body = buildEmailBody(parsed.data).slice(0, 1400);
 
       openMailto(
-        `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
       );
 
       setTimeout(async () => {
@@ -104,13 +106,18 @@ export function QuoteForm() {
   const set = (k: keyof typeof form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   return (
-    <section id="orcamento" className="relative overflow-hidden bg-primary-dark py-24 text-white sm:py-32">
+    <section
+      id="orcamento"
+      className="relative overflow-hidden bg-primary-dark py-24 text-white sm:py-32"
+    >
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />
       <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary">Orçamento</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+            Orçamento
+          </span>
           <h2 className="mt-3 font-display text-3xl font-bold sm:text-5xl">
             Peça o seu orçamento em 1 minuto
           </h2>
