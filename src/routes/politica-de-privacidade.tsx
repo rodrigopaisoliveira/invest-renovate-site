@@ -131,20 +131,39 @@ function PrivacyPolicy() {
           </p>
         </Section>
 
-        <Section title="6. Cookies e tecnologias de acompanhamento">
+        <Section title="6. Cookies, Meta Pixel e publicidade online">
           <p>
-            Este site não utiliza cookies de publicidade nem ferramentas de acompanhamento ou
-            análise (como o Meta Pixel ou o Google Analytics). Podem existir cookies ou
-            armazenamento técnico estritamente necessários ao funcionamento do site, que não exigem
-            consentimento.
+            O site funciona com cookies ou armazenamento técnico estritamente necessários, que não
+            exigem consentimento.
           </p>
           <p>
-            Se no futuro passarmos a usar cookies de medição ou publicidade, esta política será
-            atualizada e pediremos o seu consentimento prévio.
+            A {COMPANY.name} divulga os seus serviços através de anúncios nas plataformas da Meta
+            (Facebook e Instagram). Para medir o desempenho desses anúncios, o site pode vir a
+            utilizar o <strong>Meta Pixel</strong>, um pequeno código da Meta Platforms Ireland
+            Limited que recolhe dados sobre a sua navegação (por exemplo, páginas visitadas e
+            cliques nos botões de contacto), através de cookies e identificadores semelhantes. Estes
+            dados podem ser usados para medir resultados, otimizar campanhas e apresentar anúncios
+            mais relevantes.
           </p>
           <p>
-            O site contém ligações para serviços de terceiros (WhatsApp e Instagram), que têm as
-            suas próprias políticas de privacidade e cookies.
+            O Meta Pixel e quaisquer outros cookies de medição ou publicidade só são ativados com o
+            seu consentimento prévio, que pode dar, recusar ou retirar em qualquer momento. A Meta é
+            responsável pelo tratamento dos dados que recolhe através destes cookies, nos termos da
+            sua própria política:{" "}
+            <a
+              className="text-primary underline"
+              href="https://www.facebook.com/privacy/policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              facebook.com/privacy/policy
+            </a>
+            . Pode também gerir as preferências de anúncios nas definições da sua conta Facebook ou
+            Instagram.
+          </p>
+          <p>
+            O site contém ainda ligações para serviços de terceiros (WhatsApp e Instagram), que têm
+            as suas próprias políticas de privacidade e cookies.
           </p>
         </Section>
 
